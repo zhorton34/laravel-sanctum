@@ -16,3 +16,12 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+
+Auth::routes();
+
+
+Route::get('/home', 'HomeController@index')->name('home');
+
+Route::prefix('settings')->name('settings.')->group(function () {
+    Route::resource('tokens', 'TokensController');
+});
